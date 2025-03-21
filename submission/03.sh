@@ -4,7 +4,7 @@
 
 SEGWIT=$(bitcoin-cli -regtest -rpcwallet=btrustwallet getnewaddress "" "bech32")
 
-bitcoin-cli -regtest generatetoaddress 101 $SEGWIT
+bitcoin-cli -regtest generatetoaddress 101 "$SEGWIT"
 
-echo $SEGWIT
+echo "$SEGWIT"
 
