@@ -9,4 +9,11 @@ addr="2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP"
 
 raw_new_tx=$(bitcoin-cli -regtest createrawtransaction "[{\"txid\":\"$txID\",\"vout\":$vout}]" "{\"$addr\":$amount}")
 
+#sig=$(bitcoin-cli -regtest signrawtransactionwithwallet ${raw_new_tx})
+
+#send=$(bitcoin-cli -regtest sendrawtransaction ${sig})
+
+#echo "$send"
+
 echo "$raw_new_tx"
+
