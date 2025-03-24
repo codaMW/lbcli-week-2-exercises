@@ -8,7 +8,7 @@
 SEGWIT=$(bitcoin-cli -regtest getnewaddress "" "bech32")
 
 # Mine 101 blocks to the address
-bitcoin-cli -regtest generatetoaddress 101 "$SEGWIT"
+bitcoin-cli -regtest generatetoaddress 101 "${SEGWIT}"
 
 # Print only the SegWit address
 echo "$SEGWIT"
