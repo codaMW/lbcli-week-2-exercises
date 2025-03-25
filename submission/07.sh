@@ -8,7 +8,7 @@ vout=$(bitcoin-cli -regtest decoderawtransaction ${raw_tx} | jq -r '.vin[0].vout
 
 # Transaction details
 amount=0.2 # 20,000,000 satoshis in BTC
-addr="2lwLcssW49n3attkxjwg2ZCllsElisoj3pzUP"
+addr="2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP"
 
 # Create raw transaction (corrected line)
 raw_new_tx=$(bitcoin-cli -regtest createrawtransaction "[{\"txid\":\"$txID\",\"vout\":$vout}]" "{\"$addr\":$amount}")
