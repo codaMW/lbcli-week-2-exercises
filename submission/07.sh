@@ -5,20 +5,16 @@ rawTxn="01000000000101c8b0928edebbec5e698d5f86d0474595d9f6a5b2e4e3772cd9d1005f23
 
 txn_id=$(bitcoin-cli -regtest decoderawtransaction $rawTxn | jq -r '.txid')
 
-echo $txn_id
-echo "Getting the vout..."
 
 utxo_vout_1=$(bitcoin-cli -regtest decoderawtransaction $rawTxn | jq -r '.vout | .[0] | .n // .vout')
 utxo_vout_1_value=$(bitcoin-cli -regtest decoderawtransaction $rawTxn | jq -r '.vout | .[0] | .value')
 
-echo "Getting the vout 1..... with $utxo_vout_1 and value: $utxo_vout_1_value"
 
 recipient="2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP"
 
 utxo_vout_2=$(bitcoin-cli -regtest decoderawtransaction $rawTxn | jq -r '.vout | .[1] | .n // .vout')
 utxo_vout_2_value=$(bitcoin-cli -regtest decoderawtransaction $rawTxn | jq -r '.vout | .[1] | .value')
 
-echo "Getting the vout 2..... with $utxo_vout_2 and value: $utxo_vout_2_value"
 
 new_raw_tx_hex=$(bitcoin-cli -regtest -named createrawtransaction inputs="[ { \"txid\": \"$txn_id\", \"vout\": $utxo_vout_1 }, { \"txid\": \"$txn_id\", \"vout\": $utxo_vout_2 } ]" outputs="{ \"$recipient\": 0.20000000 }")
 
