@@ -13,8 +13,9 @@ addr="2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP"
 # Create raw transaction (corrected line)
 raw_new_tx=$(bitcoin-cli -regtest createrawtransaction "[{\"txid\":\"$txID\",\"vout\":$vout}]" "{\"$addr\":$amount}")
 
-dec=$(bitcoin-cli -regtest decoderawtransaction ${raw_new_tx})
+signTx=$(bitcoin-cli -regtest signrawtransactionwithwallet ${raw_new_tx} | jq -r '.hex')
 
-echo "$dec"
-# Output the new raw transaction
-echo "$raw_new_tx"
+#dec=$(bitcoin-cli -regtest decoderawtransaction ${signTx})
+
+echo "$signTx"
+
